@@ -1,13 +1,16 @@
-// 0636193937 ломанов павел
-const fs = require ('fs')
 const data = 'hello 2'
+const logger = require("./../log4jsConf")
+const infoLog = logger.infoLogger;
+const errorLog = logger.errorLogger;
+const debugLog = logger.debugLogger;
+const defaultLog = logger.defaultLogger;
 
 function myFuncTwo(i){
     setTimeout(() => {
-        console.log(data);
-        fs.appendFile('./../log.txt', data + '\n', function (error){
-            if (error) throw error
-        })
+        infoLog.info(data)
+        errorLog.error(data)
+        debugLog.debug(data)
+        defaultLog.warn(data)
         myFuncTwo(++i);
     }, 2000)
 }
